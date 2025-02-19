@@ -1,6 +1,6 @@
 #validador de CPF
 
-cpf= [5,1,8,7,9,0,3,5,8,6,3]
+cpf=[5,1,8,7,9,0,3,5,8,6,3]
 
 v1= cpf[0]*10 
 v2= cpf[1]*9
@@ -12,8 +12,7 @@ v7= cpf[6]*4
 v8= cpf[7]*3
 v9= cpf[8]*2
 soma1= v1+ v2+ v3+ v4+ v5+ v6+ v7+ v8+ v9
-divisao1= soma1%11
-digito1= 11 - divisao1
+divisao1= soma1 % 11
     
 if divisao1 <2:
     print(divisao1)
