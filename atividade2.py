@@ -21,15 +21,26 @@ def cadastarAluno():
     numeroChamada = input("Qual é o numero da chamada do Aluno (a): ")
     nome = input ("Informe O nome do Aluno (a): ")
 
+    notas = []
+    for i in range (4):
+        nota = input(f"Informe a {i}º nota do Aluno (a): ")
+        notas.append(nota)
+        nota = None
+    media = sum(notas)/4
+    notas.append(media)
+    return(print(notas))
 
 
 
 def mostarLista():
+    listaAlunos = open("lista.txt", "r")
+    for  infromacoes in listaAlunos:
+        print(infromacoes)
+    listaAlunos.close
 
 
 
-
-def notasAlunos():
+# def notasAlunos():
 
 
        
