@@ -14,8 +14,8 @@ def  consultar():
         cadastarAluno()
     elif busca ==2:
         mostarLista()
-    elif busca ==3:
-        notasAlunos()
+#    elif busca ==3:
+#         notasAlunos() 
 
 def cadastarAluno():
     numeroChamada = input("Qual é o numero da chamada do Aluno (a): ")
@@ -38,9 +38,6 @@ def mostarLista():
         print(infromacoes)
     listaAlunos.close
 
-
-
-# def notasAlunos():
 
 
        
