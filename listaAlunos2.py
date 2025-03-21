@@ -1,6 +1,5 @@
 import ast
 alunos = dict()
-
 def menu():
     opcao = input('''
 .......................................................
@@ -26,34 +25,35 @@ Escolha uma opção acima: ''')
     else:
         print ("Erro! Tente novamente.")
 
-def cadastrarAluno():
+def cadastrarAluno(): 
+    with open("lista2.txt", "r", encoding="utf-8") as file:
+        lista_notas_anterior = file.read()
+
+    alunos = ast.literal_eval(lista_notas_anterior)
+    print(alunos)
+
     materias = ["História", "Física"]
+    bimestre = []
     notas = []
     aluno = []
 
-    with open("lista.txt", "r", encoding="utf-8") as arquivo:
-        lista_notas_anterior = arquivo.read()
-
-    alunos = ast.literal_eval(lista_notas_anterior)
-    
     nome = (input("Informe o nome do aluno: "))
 
-    for a in range (len(materias)):
-        for b in range (4):
-            notas.append(float(input(f"Informe a nota do {b+1}º bimestre em {materias[a]}: ")))
-            media = sum(notas)/4
+    for b in range (len(materias)):
+        for c in range (4):
+            bimestre.append(float(input(f"Informe a nota do {c+1}º bimestre em {materias[b]}: ")))
+            media = sum(bimestre)/4
+        bimestre.append(media)
+        aluno.append(bimestre)
+        bimestre = []
+    alunos[nome] = aluno
 
-        notas.append(media)
-        aluno.append(notas)
-        notas = []
+    print(alunos)
+    with open("lista2.txt", "w", encoding="utf-8") as file:
+        file.write(f'{alunos}')
 
-    alunos[nome] = notas
-
-    with open ("lista.txt","w", encoding="utf-8") as arquivo:
-        arquivo.write(f'{alunos}')
     
-    print("Cadastro realizado com sucesso!")
-
+    
 def listaSala():
     with open('lista.txt', 'r') as f:
         results = [[str(entry) for entry in line.split()] for line in f.readlines()]
