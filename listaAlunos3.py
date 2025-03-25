@@ -94,7 +94,7 @@ pagina.write("""
             <meta charset = "UTF-8>
             <meta name "viewport" content="width=device-width, intial-scale=1.0">
             <title> Notas Aluno </title>
-            <style rel="stylesheet>
+            <style rel="stylesheet">
              table, th, td{
              border: solid;
             }
@@ -102,45 +102,43 @@ pagina.write("""
         </head>
         <body>
 """)
-
+pagina.write("<table>")
+pagina.write("""
+        <tr>
+            <th> Aluno: </td>
+            <th> 1º Bimestre </th>
+            <th> 2º Bimestre </th>
+            <th> 3º Bimestre </th>
+            <th> 4º Bimestre</th>
+            <th> Média </th>
+        </tr>
+""")
 for alunos, notas_geral in boletim.items():
     pagina.write(f"""
-        <tr>
-            <td> Aluno: {alunos}</td>
-            <td> 1º Bimestre {notas_geral[0][0]}</td>
-            <td> 2º Bimestre {notas_geral[0][1]}</td>
-            <td> 3º Bimestre {notas_geral[0][2]}</td>
-            <td> 4º Bimestre {notas_geral[0][3]}</td>
-            <td> Média {notas_geral[0][4]}</td>
-        </tr>
+            <tr>
+                <td cospan="6" style="text-align: center">{alunos}</td>
+            </tr>
+    """)
+    for i, notas in enumerate(notas_geral):
+        pagina.write(f"""
 
         <tr>
-            <td> Aluno: {alunos}</td>
-            <td> 1º Bimestre {notas_geral[1][0]}</td>
-            <td> 2º Bimestre {notas_geral[0][1]}</td>
-            <td> 3º Bimestre {notas_geral[0][2]}</td>
-            <td> 4º Bimestre {notas_geral[0][3]}</td>
-            <td> Média {notas_geral[0][4]}</td>
+            <td> Matéria {materias[i]}</td>
+            <td> {notas[0]}</td>
+            <td> {notas[1]}</td>
+            <td> {notas[2]}</td>
+            <td> {notas[3]}</td>
+            <td> {notas[4]}</td>
         </tr>
 
-        <tr>
-            <td> Aluno: {alunos}</td>
-            <td> 1º Bimestre {notas_geral[1][0]}</td>
-            <td> 2º Bimestre {notas_geral[1][1]}</td>
-            <td> 3º Bimestre {notas_geral[1][2]}</td>
-            <td> 4º Bimestre {notas_geral[1][3]}</td>
-            <td> Média {notas_geral[1][4]}</td>
-        </tr>
-
+     
+    """)
+pagina.write(f"""
+        </table>
         </body>
     </html>
-    """)
 
-
-
-    
-
-
+""")
   
 
 
